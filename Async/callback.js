@@ -1,11 +1,11 @@
-function async(myCallback) {
+function saludo(nombre, myCallback) {
     setTimeout(function(){
-        console.log('Estoy siendo asíncrona')
+        console.log('Hola ' + nombre)
         myCallback()
     }, 1000)
 }
 
 console.log('Iniciando proceso...')
-async(function(){
+saludo('Vero', function(){
     console.log('Terminando proceso...')
 })
