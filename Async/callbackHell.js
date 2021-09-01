@@ -19,17 +19,32 @@ function despedida(nombre, otherCallback) {
     }, 1000)
 }
 
+function conversacion(nombre, veces, callback) {
+    if (veces > 0) {
+        hablar(function() {
+            conversacion(nombre, --veces, callback)
+        })
+    } else {
+        despedida(nombre, callback)
+    }
+}
+
 //--
 
 console.log('Iniciando proceso...')
-saludo('Vero', function(){
-    hablar(function() {
-        hablar(function(){
-            hablar(function(){
-                despedida('Vero', function(){
-                    console.log('Terminando proceso...')
-                })
-            })
-        })
+saludo('Vero', function(nombre){
+    conversacion(nombre, 3, function() {
+        console.log('Terminado')
     })
 })
+
+//     hablar(function() {
+//         hablar(function(){
+//             hablar(function(){
+//                 despedida('Vero', function(){
+//                     console.log('Terminando proceso...')
+//                 })
+//             })
+//         })
+//     })
+// })
